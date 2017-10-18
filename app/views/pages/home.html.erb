@@ -1,0 +1,26 @@
+<h1>Home</h1>
+<p><%= notice %></p>
+
+<% if @subscriber_count == 1 %>
+  <p>Join <%= @subscriber_count %> other subscriber </p>
+<% else %>
+  <p>Join <%= @subscriber_count %> other subscribers </p>
+<% end %>
+
+<% if @subscriber.errors.any? %>
+<ul>
+  <% @subscriber.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_tag '/subscribe' do %>
+  <%= label_tag 'Name' %>
+  <%= text_field_tag :name %>
+  <br><br>
+  <%= label_tag 'Email' %>
+  <%= text_field_tag :email %>
+
+  <%= submit_tag %>
+<% end %>
